@@ -22,7 +22,8 @@ for (let i = 0; i < data.length; i++) {
 
   //  Create img element with class name card--img
   const img = document.createElement("img");
-  img.src = pokemon.sprites.front_default;
+  img.setAttribute('src', pokemon.sprites.other["official-artwork"].front_default);
+  img.setAttribute("width", "256")
   img.classList.add("card--img");
   cardLi.appendChild(img);
 
@@ -34,14 +35,13 @@ for (let i = 0; i < data.length; i++) {
   // select cardTextUl
 
   const stats = pokemon.stats;
-  console.log(stats, "stats");
+
 
   for (let j = 0; j < stats.length; j++) {
     const li = document.createElement("li");
     cardTextUl.appendChild(li);
     let rating = stats[j].base_stat;
-    let name = stats[j].stat.name;
-    console.log("NAME", name);
-    li.textContent = name + ": " + rating;
+    let name = stats[j].stat.name
+    li.textContent = name.toUpperCase() + ": " + rating;
   }
 }
